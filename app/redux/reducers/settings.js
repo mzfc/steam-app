@@ -11,7 +11,6 @@ const initialState = {
 };
 
 function data(prevState = initialState.data, action = {}) {
-  
   switch (action.type) {
     case 'SOME_ACTION_TYPE':
       return {
@@ -21,7 +20,6 @@ function data(prevState = initialState.data, action = {}) {
     default:
       return prevState;
   }
-
 }
 
 function ui(prevState = initialState.ui, action = {}) {
