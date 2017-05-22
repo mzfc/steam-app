@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { TouchableHighlight, StyleSheet, Text, View } from 'react-native';
+import TeamCard from './components/TeamCard';
 
 import { fetchData } from '../redux/actions/actions';
 
@@ -43,10 +44,8 @@ export default class TeamListScreen extends Component {
           {
             this.props.teams.length ? (
               this.props.teams.map((team, i) => {
-                return <View key={i} >
-                  <Text>Name: {team.name}</Text>
-                  <Text>Age: {team.members}</Text>
-                </View>;
+                console.log("team=", team);
+                return <TeamCard key={i} name={team.name}></TeamCard>;
               })
             ) : null
           }
@@ -58,6 +57,7 @@ export default class TeamListScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginTop: 100,
   },
   text: {
