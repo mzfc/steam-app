@@ -5,6 +5,7 @@
         "allowSyntheticDefaultImports": true,
         "baseUrl": "./",
         "paths": {
+          "@ui/*": ["app/components/ui/*"],
           "@*": ["app/*"]
         }
     }

@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TouchableHighlight, StyleSheet, Text, View } from 'react-native';
-import TeamCard from './components/TeamCard';
+import { 
+  TouchableOpacity, 
+  ScrollView, 
+  StyleSheet, 
+  Text, 
+  View,
+  Alert,
+} from 'react-native';
+
+import { AppStyles } from '@theme/';
+import {
+  Card,
+} from '@ui/';
 
 import { fetchData } from '../redux/actions/actions';
 
@@ -23,58 +34,46 @@ export default class TeamListScreen extends Component {
     teams: PropTypes.array.isRequired,
   }
 
+  componentDidMount() {
+    this._fetchData();
+  }
+
   _fetchData =() => {
     this.props.fetchData();
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Redux Examples</Text>
-        <TouchableHighlight style={styles.button} onPress={this._fetchData}>
-          <Text style={styles.buttonText}>Load Data</Text>
-        </TouchableHighlight>
-        <View style={styles.mainContent}>
+      <View style={AppStyles.container}>
+        <ScrollView
+          automaticallyAdjustContentInsets={false}
+          style={[AppStyles.container]}
+        >
+
           {
-            this.props.ui.isFetching && <Text>Loading</Text>
-          }
-          {
-            this.props.ui.error && <Text>{this.props.ui.error}</Text>
-          }
-          {
-            this.props.teams.length ? (
+          this.props.teams.length ? (
               this.props.teams.map((team, i) => {
-                console.log("team=", team);
-                return <TeamCard key={i} name={team.name}></TeamCard>;
+                return <TouchableOpacity key={i}
+                    activeOpacity={0.8}
+                    onPress={() => Alert.alert('comming soon')}
+                  >
+                  <Card
+                    image={{ uri: 'http://wp-api.mcnam.ee/wp-content/uploads/2016/10/brekkie-crumble-33651_l.jpeg' }}
+                  >
+                    <View style={[AppStyles.paddingLeftSml, AppStyles.paddingBottomSml]}>
+                      <Text h3>{team.name}</Text>
+                      <Text>
+                        Lorem ipsum diem or seckt original de pingdo of the lespec.
+                      </Text>
+                    </View>
+                  </Card>
+                </TouchableOpacity>;
               })
             ) : null
           }
-        </View>
+
+        </ScrollView>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 100,
-  },
-  text: {
-    textAlign: 'center',
-  },
-  button: {
-    height: 60,
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#0b7eff',
-  },
-  buttonText: {
-    color: 'white',
-  },
-  mainContent: {
-    margin: 10,
-  },
-});
-
