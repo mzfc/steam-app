@@ -3,8 +3,11 @@ import thunk from 'redux-thunk';
 
 import settings from '@redux/settings/reducer';
 import teams from '@redux/teams/reducer';
+import { nav, auth } from '@redux/nav';
 
 const rootReducer = combineReducers({
+  nav,
+  auth,
   settings,
   teams,
 });

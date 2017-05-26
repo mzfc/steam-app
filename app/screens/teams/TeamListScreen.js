@@ -28,6 +28,10 @@ import { fetchData } from '@redux/teams/actions';
 )
 export default class TeamListScreen extends Component {
 
+  static navigationOptions = {
+    title: 'Teams',
+  };
+
   static propTypes = {
     fetchData: PropTypes.func.isRequired,
     ui: PropTypes.object.isRequired,
