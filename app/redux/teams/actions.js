@@ -1,26 +1,28 @@
-import { 
-  TEAMS_FETCHING_DATA, 
-  TEAMS_FETCHING_DATA_FAILURE, 
-  TEAMS_FETCHING_DATA_SUCCESS,
-} from './types';
-import getTeams from '../../api/getTeams';
+//teams
+export const types = {
+  TEAMS_FETCHING_DATA: 'TEAMS/FETCHING_DATA',
+  TEAMS_FETCHING_DATA_SUCCESS: 'TEAMS/FETCHING_DATA_SUCCESS',
+  TEAMS_FETCHING_DATA_FAILURE: 'TEAMS/FETCHING_DATA_FAILURE',
+};
+
+import getTeams from '@services/getTeams';
 
 export function getData() {
   return {
-    type: TEAMS_FETCHING_DATA,
+    type: types.TEAMS_FETCHING_DATA,
   };
 }
 
 export function getDataSuccess(teams) {
   return {
-    type: TEAMS_FETCHING_DATA_SUCCESS,
+    type: types.TEAMS_FETCHING_DATA_SUCCESS,
     teams,
   };
 }
 
 export function getDataFailure(error) {
   return {
-    type: TEAMS_FETCHING_DATA_FAILURE,
+    type: types.TEAMS_FETCHING_DATA_FAILURE,
     error,
   };
 }

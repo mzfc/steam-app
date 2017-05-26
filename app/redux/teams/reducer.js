@@ -1,9 +1,5 @@
 import { combineReducers } from 'redux';
-import { 
-  TEAMS_FETCHING_DATA, 
-  TEAMS_FETCHING_DATA_SUCCESS, 
-  TEAMS_FETCHING_DATA_FAILURE,
- } from '../actions/types';
+import { types } from './actions';
 
 const initialState = {
   data: [],
@@ -16,7 +12,7 @@ const initialState = {
 
 function data(prevState = initialState.data, action = {}) {
   switch (action.type) {
-    case TEAMS_FETCHING_DATA_SUCCESS:
+    case types.TEAMS_FETCHING_DATA_SUCCESS:
       return action.teams;
     default:
       return prevState;
@@ -25,21 +21,21 @@ function data(prevState = initialState.data, action = {}) {
 
 function ui(prevState = initialState.ui, action = {}) {
   switch (action.type) {
-    case TEAMS_FETCHING_DATA:
+    case types.TEAMS_FETCHING_DATA:
       return {
         ...prevState,
         isFetching: true,
         dataFetched: false,
         error: null,
       };
-    case TEAMS_FETCHING_DATA_SUCCESS: 
+    case types.TEAMS_FETCHING_DATA_SUCCESS: 
       return {
         ...prevState,
         isFetching: false,
         dataFetched: true,
         error: null,
       };
-    case TEAMS_FETCHING_DATA_FAILURE:
+    case types.TEAMS_FETCHING_DATA_FAILURE:
       return {
         ...prevState,
         isFetching: false,

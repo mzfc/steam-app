@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import store from './app/redux/store';
+import store from './app/redux/index';
 import HomeScreen from './app/screens/HomeScreen';
-import TeamListScreen from './app/screens/TeamListScreen';
+import TeamListScreen from '@screens/teams/TeamListScreen';
 
 
 export default class App extends React.Component {

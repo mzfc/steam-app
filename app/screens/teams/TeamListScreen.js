@@ -13,9 +13,9 @@ import {
 import { AppStyles } from '@theme/';
 import {
   Card,
-} from '@ui/';
+} from '@components/ui';
 
-import { fetchData } from '../redux/actions/actions';
+import { fetchData } from '@redux/teams/actions';
 
 @connect(
   state => ({
