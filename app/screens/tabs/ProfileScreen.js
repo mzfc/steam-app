@@ -9,7 +9,11 @@ import { StyleSheet, Text, View } from 'react-native';
     welcome: state.settings.ui.welcome,
   }),
 )
-export default class HomeScreen extends Component {
+export default class ProfileScreen extends Component {
+
+  static navigationOptions = {
+    title: 'Home',
+  };
 
   static propTypes = {
     env: PropTypes.string.isRequired,
@@ -19,8 +23,7 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Current ENV: {this.props.env}</Text>
-        <Text>{this.props.welcome}</Text>
+        <Text>This is profile screen</Text>
       </View>
     );
   }

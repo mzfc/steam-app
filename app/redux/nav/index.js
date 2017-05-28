@@ -9,7 +9,7 @@ export function nav(state, action) {
         NavigationActions.reset({
           index: 0,
           actions: [
-            NavigationActions.navigate({ routeName: 'TeamList'}),
+            NavigationActions.navigate({ routeName: 'Authorized'}),
           ],
         }),
         state

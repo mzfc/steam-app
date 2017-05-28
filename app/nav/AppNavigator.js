@@ -1,21 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addNavigationHelpers, StackNavigator } from 'react-navigation';
+import { addNavigationHelpers, StackNavigator, TabNavigator } from 'react-navigation';
 
-import TeamListScreen from '@screens/teams/TeamListScreen';
+//4 main tabbed screens
+import HomeScreen from '@screens/tabs/HomeScreen';
+import TaskListScreen from '@screens/tabs/TaskListScreen';
+import ProfileScreen from '@screens/tabs/ProfileScreen';
+import TeamListScreen from '@screens/tabs/TeamListScreen';
+
 import TeamDetailScreen from '@screens/teams/TeamDetailScreen';
 import LoginScreen from '@screens/LoginScreen';
-import MainScreen from '@screens/nvex/MainScreen';
-import ProfileScreen from '@screens/nvex/ProfileScreen';
 
+
+export const TabbedScreen = TabNavigator({
+  Home: {screen: HomeScreen},
+  TaskList: {screen: TaskListScreen},
+  TeamList: {screen: TeamListScreen},
+  Profile: {screen: ProfileScreen},
+});
 
 export const AppNavigator = StackNavigator({
-  Login: { screen: LoginScreen },
-  TeamList: { screen: TeamListScreen },
-  TeamDetail: { screen: TeamDetailScreen },
-  Main: { screen: MainScreen },
-  Profile: { screen: ProfileScreen },
+  Login: {screen: LoginScreen},
+  Authorized: {screen: TabbedScreen},
+  TeamDetail: {screen: TeamDetailScreen},
 });
 
 const AppWithNavigationState = ({ dispatch, nav }) => (
