@@ -1,11 +1,13 @@
 //teams
+import getTeams from '@services/getTeams';
+import { NavigationActions } from 'react-navigation';
+
 export const types = {
   TEAMS_FETCHING_DATA: 'TEAMS/FETCHING_DATA',
   TEAMS_FETCHING_DATA_SUCCESS: 'TEAMS/FETCHING_DATA_SUCCESS',
   TEAMS_FETCHING_DATA_FAILURE: 'TEAMS/FETCHING_DATA_FAILURE',
 };
 
-import getTeams from '@services/getTeams';
 
 export function getData() {
   return {
@@ -36,4 +38,8 @@ export function fetchData() {
       })
       .catch((err) => dispatch(getDataFailure(err)));
   };
+}
+
+export function showTeamDetail() {
+  return NavigationActions.navigate({ routeName: 'TeamDetail' });
 }

@@ -10,12 +10,13 @@ import {
   Alert,
 } from 'react-native';
 
+
 import { AppStyles } from '@theme/';
 import {
   Card,
 } from '@components/ui';
 
-import { fetchData } from '@redux/teams/actions';
+import { fetchData, showTeamDetail } from '@redux/teams/actions';
 
 @connect(
   state => ({
@@ -23,7 +24,7 @@ import { fetchData } from '@redux/teams/actions';
     ui: state.teams.ui,
   }),
   {
-    fetchData,
+    fetchData, showTeamDetail,
   }
 )
 export default class TeamListScreen extends Component {
@@ -34,6 +35,7 @@ export default class TeamListScreen extends Component {
 
   static propTypes = {
     fetchData: PropTypes.func.isRequired,
+    showTeamDetail: PropTypes.func.isRequired,
     ui: PropTypes.object.isRequired,
     teams: PropTypes.array.isRequired,
   }
@@ -59,7 +61,7 @@ export default class TeamListScreen extends Component {
               this.props.teams.map((team, i) => {
                 return <TouchableOpacity key={i}
                     activeOpacity={0.8}
-                    onPress={() => Alert.alert('comming soon')}
+                    onPress={() => this.props.showTeamDetail()}
                   >
                   <Card
                     image={{ uri: 'http://wp-api.mcnam.ee/wp-content/uploads/2016/10/brekkie-crumble-33651_l.jpeg' }}
