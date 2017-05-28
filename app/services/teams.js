@@ -4,10 +4,18 @@ const teams = [
   { name: 'Team 3', members: 44 },
 ];
 
-export default () => {
+export const getTeams = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       return resolve(teams);
-    }, 3000);
+    }, 1000);
+  });
+};
+
+export const getTeamDetail = (teamId: string) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      return resolve(teams[2]);
+    }, 1000);
   });
 };

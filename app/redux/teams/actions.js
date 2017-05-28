@@ -1,5 +1,5 @@
 //teams
-import getTeams from '@services/getTeams';
+import { getTeams, getTeamDetail } from '@services/teams';
 import { NavigationActions } from 'react-navigation';
 
 export const types = {
@@ -40,6 +40,13 @@ export function fetchData() {
   };
 }
 
-export function showTeamDetail() {
-  return NavigationActions.navigate({ routeName: 'TeamDetail' });
+export function showTeamDetail(teamId) {
+  
+  return (dispatch) => {
+    getTeamDetail(teamId)
+    .then((team) => {
+      return dispatch(NavigationActions.navigate({ routeName: 'TeamDetail', params: {team} }));
+    });
+  };
+
 }

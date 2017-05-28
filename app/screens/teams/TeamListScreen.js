@@ -7,7 +7,6 @@ import {
   StyleSheet, 
   Text, 
   View,
-  Alert,
 } from 'react-native';
 
 

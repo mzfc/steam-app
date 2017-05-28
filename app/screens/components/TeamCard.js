@@ -9,9 +9,6 @@ export default class TeamCard extends Component {
   }
 
   render() {
-
-    console.log('AppColors: ', AppColors);
-
     return (
       <View style={AppStyles.containerCentered}>
         <Text>{this.props.name}</Text>
